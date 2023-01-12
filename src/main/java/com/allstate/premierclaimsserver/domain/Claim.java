@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Date;
+import java.util.List;
 import java.util.Objects;
 @Entity
 public class Claim {
@@ -23,6 +24,73 @@ public class Claim {
     private String claim_id;
     private String claimType;
     private String claimdetails;
+    private List notes;
+    private List tasks;
+
+    public Claim(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Claim{" +
+                "id=" + id +
+                ", claimamount=" + claimamount +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", status='" + status + '\'' +
+                ", claimDate=" + claimDate +
+                ", claim_id='" + claim_id + '\'' +
+                ", claimType='" + claimType + '\'' +
+                ", claimdetails='" + claimdetails + '\'' +
+                ", notes=" + notes +
+                ", tasks=" + tasks +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Claim claim = (Claim) o;
+        return Objects.equals(id, claim.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public List getNotes() {
+        return notes;
+    }
+
+    public void setNotes(List notes) {
+        this.notes = notes;
+    }
+
+    public List getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List tasks) {
+        this.tasks = tasks;
+    }
+
+    public Claim(List notes, List tasks) {
+        this.notes = notes;
+        this.tasks = tasks;
+    }
 
     public Double getClaimamount() {
         return claimamount;
@@ -120,32 +188,4 @@ public class Claim {
     public Claim() {
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Claim claim = (Claim) o;
-        return Objects.equals(claimamount, claim.claimamount) && Objects.equals(firstName, claim.firstName) && Objects.equals(lastName, claim.lastName) && Objects.equals(email, claim.email) && Objects.equals(phone, claim.phone) && Objects.equals(status, claim.status) && Objects.equals(claimDate, claim.claimDate) && Objects.equals(claim_id, claim.claim_id) && Objects.equals(claimType, claim.claimType) && Objects.equals(claimdetails, claim.claimdetails);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(claimamount, firstName, lastName, email, phone, status, claimDate, claim_id, claimType, claimdetails);
-    }
-
-    @Override
-    public String toString() {
-        return "Claim{" +
-                "claimamount=" + claimamount +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", status='" + status + '\'' +
-                ", claimDate=" + claimDate +
-                ", claim_id='" + claim_id + '\'' +
-                ", claimType='" + claimType + '\'' +
-                ", claimdetails='" + claimdetails + '\'' +
-                '}';
-    }
 }
