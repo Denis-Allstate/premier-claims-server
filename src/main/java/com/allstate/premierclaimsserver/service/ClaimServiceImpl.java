@@ -27,6 +27,11 @@ public class ClaimServiceImpl implements ClaimService{
     }
 
     @Override
+    public List<Claim> getByClaimType(String claimType) {
+        return claimRepository.findAllByClaimType(claimType);
+    }
+
+    @Override
     public Claim getById(Integer id) throws ClaimNotFoundException {
         Optional<Claim> optionalClaim = claimRepository.findById(id);
         if (optionalClaim.isPresent()){

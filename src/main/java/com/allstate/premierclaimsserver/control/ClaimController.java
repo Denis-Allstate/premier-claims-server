@@ -18,8 +18,12 @@ public class ClaimController {
     private ClaimService claimService;
 
     @GetMapping
-    public List<Claim> getAllClaims(){
+    public List<Claim> getAllClaims(@RequestParam(value="claimType", required = false) String claimType){
+        if(claimType == null) {
             return claimService.getAllClaims();
+        }else{
+                return claimService.getByClaimType(claimType);
+            }
     }
 
     @GetMapping("/{claimId}")

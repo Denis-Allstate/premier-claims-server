@@ -9,8 +9,8 @@ public interface ClaimService {
 
     public void saveClaim(Claim claim);
 
-public List<Claim> getAllClaims();
-
-public Claim getById(Integer id) throws ClaimNotFoundException;
+    public List<Claim> getAllClaims();
+    public Claim getById(Integer id) throws ClaimNotFoundException;
+    public List<Claim> getByClaimType(String claimType);
 
 }
