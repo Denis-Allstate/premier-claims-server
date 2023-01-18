@@ -27,8 +27,8 @@ public class ClaimServiceImpl implements ClaimService{
     }
 
     @Override
-    public List<Claim> getByClaimType(String claimType) {
-        return claimRepository.findAllByClaimType(claimType);
+    public List<Claim> getByStatus(String status) {
+        return claimRepository.findAllByStatus(status);
     }
 
     @Override
