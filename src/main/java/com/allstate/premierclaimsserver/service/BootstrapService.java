@@ -17,10 +17,13 @@ public class BootstrapService {
     @PostConstruct
     public void setUpInitialData(){
         int numberOfClaims = claimRepository.findAll().size();
-        if(numberOfClaims == 0) {
-            Claim newClaim = new Claim(7000.00, "Denis", "Friel", "DenisTest@test.com", "0774545856", "Open", Date.valueOf("2023-12-01"), "1001", "Auto","Hitting a parked car");
+        if(claimRepository.count() == 0) {
+            Claim newClaim = new Claim(1,500.00, "Denis", "Friel", "DenisTest@test.com", "0774545856", "Open", Date.valueOf("2023-12-01"), "1001", "Motor","Hitting a parked car", "", "2023", "Ford", "F150", "","");
+            Claim newClaim1 = new Claim(2,500.00, "Denis", "Friel", "DenisTest@test.com", "0774545856", "Pending", Date.valueOf("2023-12-01"), "1001", "Motor","Hitting a parked car", "", "2023", "Ford", "F150", "","");
+
             Claim savedClaim = claimRepository.save(newClaim);
-            System.out.println("Claim saved with id" + savedClaim.getId());
+            savedClaim = claimRepository.save(newClaim1);
+            //System.out.println("Claim saved with id" + savedClaim.getId());
         }
     }
 }

@@ -20,18 +20,74 @@ public class Claim {
     private String claimId;
     private String claimType;
     private String claimDetails;
+
+    private String address;
+    private String year;
+    private String make;
+    private String model;
+    private String typeAnimal;
+    private String breed;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getMake() {
+        return make;
+    }
+
+    public void setMake(String make) {
+        this.make = make;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getTypeAnimal() {
+        return typeAnimal;
+    }
+
+    public void setTypeAnimal(String typeAnimal) {
+        this.typeAnimal = typeAnimal;
+    }
+
+    public String getBreed() {
+        return breed;
+    }
+
+    public void setBreed(String breed) {
+        this.breed = breed;
+    }
 //    @OneToMany
 //    private List<String> notes;
 //    @OneToMany
 //    private List<String> tasks;
 
-    public Integer getId() {
-        return id;
+    public Claim(Integer id) {
+        this.id = id;
     }
 
     @Override
     public String toString() {
         return "Claim{" +
+                "id=" + id +
                 ", claimAmount=" + claimAmount +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
@@ -42,7 +98,12 @@ public class Claim {
                 ", claimId='" + claimId + '\'' +
                 ", claimType='" + claimType + '\'' +
                 ", claimDetails='" + claimDetails + '\'' +
-
+                ", address='" + address + '\'' +
+                ", year='" + year + '\'' +
+                ", make='" + make + '\'' +
+                ", model='" + model + '\'' +
+                ", typeAnimal='" + typeAnimal + '\'' +
+                ", breed='" + breed + '\'' +
                 '}';
     }
 
@@ -51,12 +112,16 @@ public class Claim {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Claim claim = (Claim) o;
-        return Objects.equals(id, claim.id);
+        return Objects.equals(id, claim.id) && Objects.equals(claimAmount, claim.claimAmount) && Objects.equals(firstName, claim.firstName) && Objects.equals(lastName, claim.lastName) && Objects.equals(email, claim.email) && Objects.equals(phone, claim.phone) && Objects.equals(status, claim.status) && Objects.equals(claimDate, claim.claimDate) && Objects.equals(claimId, claim.claimId) && Objects.equals(claimType, claim.claimType) && Objects.equals(claimDetails, claim.claimDetails) && Objects.equals(address, claim.address) && Objects.equals(year, claim.year) && Objects.equals(make, claim.make) && Objects.equals(model, claim.model) && Objects.equals(typeAnimal, claim.typeAnimal) && Objects.equals(breed, claim.breed);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(id, claimAmount, firstName, lastName, email, phone, status, claimDate, claimId, claimType, claimDetails, address, year, make, model, typeAnimal, breed);
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public void setId(Integer id) {
@@ -159,7 +224,8 @@ public class Claim {
         this.claimDetails = claimDetails;
     }
 
-    public Claim(Double claimAmount, String firstName, String lastName, String email, String phone, String status, Date claimDate, String claimId, String claimType, String claimDetails) {
+    public Claim(Integer id, Double claimAmount, String firstName, String lastName, String email, String phone, String status, Date claimDate, String claimId, String claimType, String claimDetails, String address, String year, String make, String model, String typeAnimal, String breed) {
+        this.id = id;
         this.claimAmount = claimAmount;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -170,8 +236,27 @@ public class Claim {
         this.claimId = claimId;
         this.claimType = claimType;
         this.claimDetails = claimDetails;
-
+        this.address = address;
+        this.year = year;
+        this.make = make;
+        this.model = model;
+        this.typeAnimal = typeAnimal;
+        this.breed = breed;
     }
+
+    //    public Claim(Double claimAmount, String firstName, String lastName, String email, String phone, String status, Date claimDate, String claimId, String claimType, String claimDetails) {
+//        this.claimAmount = claimAmount;
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.email = email;
+//        this.phone = phone;
+//        this.status = status;
+//        this.claimDate = claimDate;
+//        this.claimId = claimId;
+//        this.claimType = claimType;
+//        this.claimDetails = claimDetails;
+//
+//    }
     public Claim() {
     }
 
