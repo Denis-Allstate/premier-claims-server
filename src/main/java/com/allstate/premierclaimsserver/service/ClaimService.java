@@ -13,6 +13,8 @@ public interface ClaimService {
     public List<Claim> getAllClaims();
     public Claim getById(Integer id) throws ClaimNotFoundException;
     public List<Claim> getByStatus(String status);
+
+    public List<Claim> getByLastName(String lastName);
     public Claim updateClaim(Integer id, Map<String, Object> fields);
 
 }

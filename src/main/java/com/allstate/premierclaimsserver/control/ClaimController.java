@@ -17,23 +17,30 @@ public class ClaimController {
     private ClaimService claimService;
 
     @GetMapping
-    public List<Claim> getAllClaims(@RequestParam(value="status", required = false) String status){
-        if(status == null) {
+    public List<Claim> getAllClaims(@RequestParam(value="status", required = false) String status,
+                                    @RequestParam(value="lastName", required = false) String lastName){
+        if(status == null && lastName == null ) {
             return claimService.getAllClaims();
-        }else if(status.equals("Open")){
+        }else if(status != null && status.equals("Open")){
             List<Claim> AllOpenClaims = new ArrayList<>();
             List<Claim> openClaims =claimService.getByStatus("Open");
             List<Claim> pendingClaims = claimService.getByStatus("Pending");
             AllOpenClaims.addAll(openClaims);
             AllOpenClaims.addAll(pendingClaims);
             return AllOpenClaims;
-        }else if(status.equals("Closed")){
+        }else if(status != null && status.equals("Closed")){
             List<Claim> AllClosedClaims = new ArrayList<>();
             List<Claim> closedClaims =claimService.getByStatus("Closed");
             List<Claim> rejectedClaims = claimService.getByStatus("Rejected");
             AllClosedClaims.addAll(closedClaims);
             AllClosedClaims.addAll(rejectedClaims);
             return AllClosedClaims;
+        }
+        else if(lastName != null){
+            List<Claim> AllClaimsByLastName = new ArrayList<>();
+            List<Claim> claimsByLastName =claimService.getByLastName(lastName);
+            AllClaimsByLastName.addAll(claimsByLastName);
+            return AllClaimsByLastName;
         }else{
                 return claimService.getByStatus(status);
             }

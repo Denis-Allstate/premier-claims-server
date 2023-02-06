@@ -10,5 +10,6 @@ import java.util.List;
 public interface ClaimRepository extends JpaRepository<Claim, Integer> {
 
     public List<Claim> findAllByStatus(String status);
+    public List<Claim> findAllByLastName(String lastName);
 
 }

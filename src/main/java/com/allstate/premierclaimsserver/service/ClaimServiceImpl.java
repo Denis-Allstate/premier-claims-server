@@ -30,6 +30,12 @@ public class ClaimServiceImpl implements ClaimService{
 
         return claimRepository.findAllByStatus(status);
     }
+
+    @Override
+    public List<Claim> getByLastName(String lastName) {
+        return claimRepository.findAllByLastName(lastName);
+    }
+
     @Override
     public Claim updateClaim(Integer id, Map<String, Object> fields) {
         //load existing payment
@@ -49,10 +55,10 @@ public class ClaimServiceImpl implements ClaimService{
     @Override
     public Claim getById(Integer id) throws ClaimNotFoundException {
         Optional<Claim> optionalClaim = claimRepository.findById(id);
-        if (optionalClaim.isPresent()){
+        if (optionalClaim.isPresent()) {
             return optionalClaim.get();
-        }else{
-            throw new ClaimNotFoundException("There is no payment with id " +id);
+        } else {
+            throw new ClaimNotFoundException("There is no claim with id " + id);
         }
     }
 }
