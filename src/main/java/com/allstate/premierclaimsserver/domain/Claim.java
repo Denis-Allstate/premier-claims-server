@@ -19,6 +19,7 @@ public class Claim {
     private Date claimDate;
     private String claimId;
     private String claimType;
+    private String claimReason;
     private String claimDetails;
 
     private String address;
@@ -97,6 +98,7 @@ public class Claim {
                 ", claimDate=" + claimDate +
                 ", claimId='" + claimId + '\'' +
                 ", claimType='" + claimType + '\'' +
+                ", claimReason='" + claimReason + '\'' +
                 ", claimDetails='" + claimDetails + '\'' +
                 ", address='" + address + '\'' +
                 ", year='" + year + '\'' +
@@ -112,12 +114,12 @@ public class Claim {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Claim claim = (Claim) o;
-        return Objects.equals(id, claim.id) && Objects.equals(claimAmount, claim.claimAmount) && Objects.equals(firstName, claim.firstName) && Objects.equals(lastName, claim.lastName) && Objects.equals(email, claim.email) && Objects.equals(phone, claim.phone) && Objects.equals(status, claim.status) && Objects.equals(claimDate, claim.claimDate) && Objects.equals(claimId, claim.claimId) && Objects.equals(claimType, claim.claimType) && Objects.equals(claimDetails, claim.claimDetails) && Objects.equals(address, claim.address) && Objects.equals(year, claim.year) && Objects.equals(make, claim.make) && Objects.equals(model, claim.model) && Objects.equals(typeAnimal, claim.typeAnimal) && Objects.equals(breed, claim.breed);
+        return Objects.equals(id, claim.id) && Objects.equals(claimAmount, claim.claimAmount) && Objects.equals(firstName, claim.firstName) && Objects.equals(lastName, claim.lastName) && Objects.equals(email, claim.email) && Objects.equals(phone, claim.phone) && Objects.equals(status, claim.status) && Objects.equals(claimDate, claim.claimDate) && Objects.equals(claimId, claim.claimId) && Objects.equals(claimType, claim.claimType) && Objects.equals(claimReason, claim.claimReason)&& Objects.equals(claimDetails, claim.claimDetails) && Objects.equals(address, claim.address) && Objects.equals(year, claim.year) && Objects.equals(make, claim.make) && Objects.equals(model, claim.model) && Objects.equals(typeAnimal, claim.typeAnimal) && Objects.equals(breed, claim.breed);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, claimAmount, firstName, lastName, email, phone, status, claimDate, claimId, claimType, claimDetails, address, year, make, model, typeAnimal, breed);
+        return Objects.hash(id, claimAmount, firstName, lastName, email, phone, status, claimDate, claimId, claimType, claimReason, claimDetails, address, year, make, model, typeAnimal, breed);
     }
 
     public Integer getId() {
@@ -216,6 +218,14 @@ public class Claim {
         this.claimType = claimType;
     }
 
+    public String getClaimReason() {
+        return claimReason;
+    }
+
+    public void setClaimReason(String claimReason) {
+        this.claimReason = claimReason;
+    }
+
     public String getClaimDetails() {
         return claimDetails;
     }
@@ -224,7 +234,7 @@ public class Claim {
         this.claimDetails = claimDetails;
     }
 
-    public Claim(Integer id, Double claimAmount, String firstName, String lastName, String email, String phone, String status, Date claimDate, String claimId, String claimType, String claimDetails, String address, String year, String make, String model, String typeAnimal, String breed) {
+    public Claim(Integer id, Double claimAmount, String firstName, String lastName, String email, String phone, String status, Date claimDate, String claimId, String claimType, String claimReason, String claimDetails, String address, String year, String make, String model, String typeAnimal, String breed) {
         this.id = id;
         this.claimAmount = claimAmount;
         this.firstName = firstName;
@@ -235,6 +245,7 @@ public class Claim {
         this.claimDate = claimDate;
         this.claimId = claimId;
         this.claimType = claimType;
+        this.claimReason = claimReason;
         this.claimDetails = claimDetails;
         this.address = address;
         this.year = year;
@@ -244,7 +255,7 @@ public class Claim {
         this.breed = breed;
     }
 
-    //    public Claim(Double claimAmount, String firstName, String lastName, String email, String phone, String status, Date claimDate, String claimId, String claimType, String claimDetails) {
+    //    public Claim(Double claimAmount, String firstName, String lastName, String email, String phone, String status, Date claimDate, String claimId, String claimType, String claimReason, String claimDetails) {
 //        this.claimAmount = claimAmount;
 //        this.firstName = firstName;
 //        this.lastName = lastName;
